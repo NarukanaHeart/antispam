@@ -15,8 +15,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Hedeqiang\\Antispam\\": "src"
-        }
+            "Omni\\": [
+                "src"
+            ]
+        },
+        "files": [
+            "src/helper.php"
+        ]
     },
     "extra": {
         "laravel": {

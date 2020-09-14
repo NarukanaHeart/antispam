@@ -30,7 +30,7 @@ class Antispam
      * @param array $params 请求参数，建议 是否必选 Y 的都传递，N 可不传
      * @param array $extras 业务扩展参数
      */
-    public function textScan(array $params = [], array $extras = []): array
+    public function textScan(array $params = [], array $extras = [])
     {
         /*$params = [
             'content' => 'XXX','title' => 'XXX','dataId' => 123
@@ -52,7 +52,7 @@ class Antispam
      * @param array $texts  数组，详情参考 https://support.dun.163.com/documents/2018041901?docId=424382077801385984
      * @param array $extras 业务扩展参数
      */
-    public function textBatchScan($texts = [], array $extras = []): array
+    public function textBatchScan($texts = [], array $extras = [])
     {
         /*$texts = [
             ['content' => 'XXX','title' => 'XXX','dataId' => 123],
@@ -70,7 +70,7 @@ class Antispam
     /**
      * 文本离线结果获取.
      */
-    public function textCallback(): array
+    public function textCallback()
     {
         $params['version'] = Url::TEXT_VERSION;
         $params = $this->baseParams($params);
@@ -83,7 +83,7 @@ class Antispam
      *
      * @param array $feedbacks String(json数组) 参考：https://support.dun.163.com/documents/2018041901?docId=396075425773023232
      */
-    public function textFeedback(array $feedbacks): array
+    public function textFeedback(array $feedbacks)
     {
         /*
         $feedback = [
@@ -102,7 +102,7 @@ class Antispam
      *
      * @param array $params 参考： https://support.dun.163.com/documents/2018041901?docId=424741951897509888
      */
-    public function addKeyWorld(array $params): array
+    public function addKeyWorld(array $params)
     {
         /*$params = [
             'category' => '100',
@@ -123,7 +123,7 @@ class Antispam
      *
      * @param array $ids https://support.dun.163.com/documents/2018041901?docId=424742251085602816
      */
-    public function delKeyWorld(array $ids): array
+    public function delKeyWorld(array $ids)
     {
         // $ids =['23234140','23234141'];
 
@@ -141,7 +141,7 @@ class Antispam
      *
      * @param array $params 参考：https://support.dun.163.com/documents/2018041901?docId=428324742066655232
      */
-    public function textQuery(array $params = []): array
+    public function textQuery(array $params = [])
     {
         /*$params = [
             'id' => '23223254',
@@ -167,7 +167,7 @@ class Antispam
      * @param array $checkLabels String 数组 接口指定过检分类，可多选，过检分类列表：100：色情，110：性感低俗，200：广告，210：二维码，300：暴恐，400：违禁，500：涉政
      * @param array $extras      业务参数
      */
-    public function imageScan(array $images, array $checkLabels = [], array $extras = []): array
+    public function imageScan(array $images, array $checkLabels = [], array $extras = [])
     {
         $params['version'] = Url::IMAGE_VERSION;
         $params['images'] = json_encode($this->getTask($images));
@@ -180,7 +180,7 @@ class Antispam
     /**
      * 图片离线结果获取.
      */
-    public function imageCallback(): array
+    public function imageCallback()
     {
         $params['version'] = Url::IMAGE_VERSION;
         $params = $this->baseParams($params);
@@ -193,7 +193,7 @@ class Antispam
      *
      * @param array $feedbacks String(json数组) 参考：https://support.dun.163.com/documents/2018041901?docId=396075425773023232
      */
-    public function imageFeedback(array $feedbacks): array
+    public function imageFeedback(array $feedbacks)
     {
         $params['feedbacks'] = json_encode($feedbacks);
         //return $params;
@@ -210,7 +210,7 @@ class Antispam
      *
      * @param $params
      */
-    protected function toUtf8($params): array
+    protected function toUtf8($params)
     {
         $utf8s = [];
         foreach ($params as $key => $value) {
@@ -227,8 +227,10 @@ class Antispam
      *
      * @param $secretKey
      * @param $params
+     *
+     * @return string
      */
-    protected function gen_signature($secretKey, $params): string
+    protected function gen_signature($secretKey, $params)
     {
         ksort($params);
         $buff = '';
@@ -246,7 +248,7 @@ class Antispam
     /**
      * 基础参数.
      */
-    protected function baseParams(array $params = []): array
+    protected function baseParams(array $params = [])
     {
         $params['secretId'] = $this->config->get('secretId');
         $params['businessId'] = $this->config->get('businessId');
@@ -265,7 +267,7 @@ class Antispam
      *
      * @param $version
      */
-    protected function buildEndpoint($version, string $url): string
+    protected function buildEndpoint($version, string $url)
     {
         return \sprintf(Url::ENDPOINT_TEMPLATE, $version, $url);
     }
