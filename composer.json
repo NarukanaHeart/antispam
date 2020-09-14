@@ -18,10 +18,7 @@
             "Omni\\": [
                 "src"
             ]
-        },
-        "files": [
-            "src/helper.php"
-        ]
+        }
     },
     "extra": {
         "laravel": {
