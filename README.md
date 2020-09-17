@@ -1,6 +1,3 @@
-* source: [hedeqiang/antispam](https://github.com/hedeqiang/antispam)
-* [OM0-2483](https://jira-oa.030mall.com/browse/OM0-2483)
-
 <h1 align="center"> antispam </h1>
 
 <p align="center"> 网易云 易盾 内容安全 PHP SDK </p>
