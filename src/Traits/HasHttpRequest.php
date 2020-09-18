@@ -27,7 +27,7 @@ trait HasHttpRequest
      *
      * @return array
      */
-    protected function get(string $endpoint, $query = [], $headers = [])
+    protected function get($endpoint, $query = [], $headers = [])
     {
         return $this->request('get', $endpoint, [
             'headers' => $headers,
@@ -43,7 +43,7 @@ trait HasHttpRequest
      *
      * @return array
      */
-    protected function post(string $endpoint, $params = [], $headers = [])
+    protected function post($endpoint, $params = [], $headers = [])
     {
         return $this->request('post', $endpoint, [
             'headers' => $headers,
@@ -75,7 +75,7 @@ trait HasHttpRequest
      *
      * @return array
      */
-    protected function request(string $method, string $endpoint, $options = [])
+    protected function request($method, $endpoint, $options = [])
     {
         return $this->unwrapResponse($this->getHttpClient($this->getBaseOptions())->{$method}($endpoint, $options));
     }

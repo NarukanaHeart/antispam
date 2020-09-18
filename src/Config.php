@@ -39,7 +39,7 @@ class Config implements ArrayAccess
      *
      * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get($key, $default = null)
     {
         $config = $this->config;
         if (is_null($key)) {
@@ -65,7 +65,7 @@ class Config implements ArrayAccess
      *
      * @return array
      */
-    public function set(string $key, $value)
+    public function set($key, $value)
     {
         if (is_null($key)) {
             throw new InvalidArgumentException('Invalid config key.');
@@ -89,7 +89,7 @@ class Config implements ArrayAccess
      *
      * @return bool
      */
-    public function has(string $key)
+    public function has($key)
     {
         return (bool) $this->get($key);
     }
